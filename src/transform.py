@@ -6,17 +6,13 @@ def transform_data(records):
     clean_records = []
     rejected_records = []
 
-    for record in records:
+    for expense_id, record in enumerate(records, start=1):
         try:
-            expense_id = int(record["expense_id"])
             date_value = record["date"].strip()
             category_value = record["category"].strip()
             amount = float(record["amount"])
 
             datetime.strptime(date_value, "%Y-%m-%d")
-
-            if expense_id <= 0:
-                raise ValueError("Expense ID must be positive")
 
             if not category_value:
                 raise ValueError("Category cannot be blank")
@@ -46,7 +42,6 @@ if __name__ == "__main__":
     print(f"Records extracted: {len(raw_records)}")
     print(f"Records accepted: {len(clean_records)}")
     print(f"Records rejected: {len(rejected_records)}")
-    print("\nClean records:")
 
     for record in clean_records:
         print(record)
