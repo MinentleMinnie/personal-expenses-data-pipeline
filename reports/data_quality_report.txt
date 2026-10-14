@@ -1,0 +1,8 @@
+
+    EXPENSE DATA QUALITY REPORT
+    ===========================
+
+    Total records extracted: 20
+    Records accepted: 20
+    Records rejected: 0
+    

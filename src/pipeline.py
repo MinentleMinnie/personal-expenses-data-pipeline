@@ -23,15 +23,32 @@ def run_pipeline():
     raw_records = extract_data()
     logging.info("Records extracted: %s", len(raw_records))
 
-    # Step 2: Transform
+       # Step 2: Transform
     clean_records, rejected_records = transform_data(raw_records)
 
-    logging.info("Records accepted: %s", len(clean_records))
-    logging.info("Records rejected: %s", len(rejected_records))
+    accepted_count = len(clean_records)
+    rejected_count = len(rejected_records)
+    total_count = len(raw_records)
 
-    # Step 3: Load
-    inserted_count = load_expenses(clean_records)
-    logging.info("New records loaded: %s", inserted_count)
+    logging.info("Records accepted: %s", accepted_count)
+    logging.info("Records rejected: %s", rejected_count)
+
+    # Step 3: Generate data quality report
+    report = f"""
+    EXPENSE DATA QUALITY REPORT
+    ===========================
+
+    Total records extracted: {total_count}
+    Records accepted: {accepted_count}
+    Records rejected: {rejected_count}
+    """
+
+    report_path = "reports/data_quality_report.txt"
+
+    with open(report_path, "w", encoding="utf-8") as file:
+        file.write(report)
+
+    logging.info("Data quality report saved to %s", report_path)
 
     # Step 4: Analyse
     print("\nEXPENSE ANALYSIS")
