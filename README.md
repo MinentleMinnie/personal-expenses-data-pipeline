@@ -1,42 +1,55 @@
+# Personal Expenses Data Pipeline
+
 ## Project Overview
 
-The Personal Expenses Data Pipeline is a Python-based data
-engineering project that processes personal expense records.
+This project is a beginner-friendly data engineering project
+that processes personal expense records.
 
-The project reads raw expense data from a CSV file, validates
-and cleans the records, and prepares the data for storage in
-a relational database.
+The pipeline reads expense data from a CSV file, validates and
+cleans the records, stores valid records in an SQLite database,
+and generates spending analysis.
 
-The goal is to demonstrate the fundamental stages of a data
-engineering workflow, including data extraction, transformation,
-validation, and loading.
-
-## Problem Statement
-
-Raw datasets can contain missing values, inconsistent
-categories, invalid dates, and incorrect amounts.
-
-These problems can affect the accuracy of reports and
-analyses.
-
-This project aims to improve data quality by identifying
-invalid records and preparing clean data for further analysis.
+It also produces a data quality report showing how many records
+were extracted, accepted, and rejected.
 
 ## Project Objectives
 
-- Extract expense records from a CSV file.
-- Validate dates, categories, and expense amounts.
-- Standardise category names.
-- Separate valid records from invalid records.
-- Store cleaned data in a SQLite database.
-- Use SQL to analyse expense patterns.
-- Build a repeatable data processing pipeline.
+- Extract data from a CSV file.
+- Validate and clean expense records using Python.
+- Reject records containing invalid data.
+- Store valid records in an SQLite database.
+- Analyse spending using SQL queries.
+- Generate a data quality report.
+- Test the application using Python's unittest framework.
 
-## Technologies
+## Technologies Used
 
 - Python
 - CSV
-- SQL
 - SQLite
-- Git
-- GitHub
+- SQL
+- Git and GitHub
+- Python unittest
+
+## Project Structure
+
+```text
+personal-expenses-data-pipeline/
+├── data/
+│   └── expenses.csv
+├── database/
+│   ├── expenses.db
+│   └── schema.sql
+├── reports/
+│   └── data_quality_report.txt
+├── src/
+│   ├── extract.py
+│   ├── transform.py
+│   ├── load.py
+│   ├── analyze.py
+│   └── pipeline.py
+├── tests/
+│   ├── test_transform.py
+│   ├── test_load.py
+│   └── test_pipeline.py
+└── README.md
